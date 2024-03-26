@@ -1,4 +1,6 @@
 import 'package:daily_weather/config/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:daily_weather/features/weather/presentation/bloc/daily_weather_bloc.dart';
 import 'package:daily_weather/features/weather/presentation/screens/home_screen.dart';
 import 'package:daily_weather/injection_container.dart';
 import 'package:flutter/material.dart';
@@ -19,14 +21,18 @@ class WeatherApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: theme,
-      home: const HomeScreen(),
+    return BlocProvider(
+      create: (context) => DailyWeatherBloc(
+        weatherRepository: serviceLocator(),
+      ),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: theme,
+        home: const HomeScreen(),
+      ),
     );
   }
 }
-
 
 Future<void> _init() async {
   await initServiceLocator();
