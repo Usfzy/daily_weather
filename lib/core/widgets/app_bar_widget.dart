@@ -4,7 +4,6 @@ import '../utils/colors.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final Color? backgroundColor;
   final TextStyle? textStyle;
   final double? elevation;
   final bool automaticallyImplyLeading;
@@ -15,7 +14,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
     super.key,
     required this.title,
-    this.backgroundColor = kAppbarColor,
     this.textStyle = const TextStyle(color: kWhiteColor),
     this.elevation = 0,
     this.centerTitle = true,
@@ -31,7 +29,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: textStyle,
       ),
-      backgroundColor: backgroundColor,
       automaticallyImplyLeading: automaticallyImplyLeading,
       elevation: elevation,
       centerTitle: centerTitle,
