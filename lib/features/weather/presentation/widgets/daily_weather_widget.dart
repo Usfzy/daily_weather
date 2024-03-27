@@ -61,7 +61,7 @@ class DailyWeatherWidget extends StatelessWidget {
                               vSpace(4),
                               TemperatureItem(
                                 icon: ImageConstants.kTemperatureHigh,
-                                text: "Low",
+                                text: "Low ",
                                 temperature: weather.temperature2mMin,
                               ),
                               vSpace(4),
@@ -148,7 +148,7 @@ class TemperatureItem extends StatelessWidget {
         ),
         const Spacer(),
         if (temperature != null) ...[
-          hSpace(16),
+          hSpace(8),
           Text(
             '$temperature°',
             style: context.textTheme.titleSmall?.copyWith(
