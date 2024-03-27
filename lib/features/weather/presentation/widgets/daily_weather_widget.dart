@@ -93,8 +93,8 @@ class DailyWeatherWidget extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: 12,
-          top: 12,
+          top: 10,
+          right: 10,
           child: Text(weather.time),
         ),
       ],
@@ -147,13 +147,15 @@ class TemperatureItem extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        if (temperature != null)
+        if (temperature != null) ...[
+          hSpace(16),
           Text(
             '$temperature°',
             style: context.textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
+        ],
         if (time != null)
           Text(
             '$time',
