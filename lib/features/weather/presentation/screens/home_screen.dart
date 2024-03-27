@@ -1,3 +1,4 @@
+import 'package:daily_weather/core/constants/constants.dart';
 import 'package:daily_weather/core/widgets/custom_divider.dart';
 import 'package:daily_weather/core/widgets/custom_error_widget.dart';
 import 'package:daily_weather/core/widgets/custom_progress_indicator.dart';
@@ -33,25 +34,37 @@ class HomeScreenState extends State<HomeScreen> {
         onRefresh: () async {
           _loadDailyWeatherData();
         },
-        child: BlocBuilder<DailyWeatherBloc, DailyWeatherState>(
-          builder: (context, state) {
-            return state.when(
-              loading: () => const Center(child: CustomProgressIndicator()),
-              loaded: (List<DailyWeather> dailyWeathers) {
-                return ListView.separated(
-                  separatorBuilder: (context, index) => const CustomDivider(),
-                  itemCount: dailyWeathers.length,
-                  itemBuilder: (context, index) {
-                    return DailyWeatherWidget(weather: dailyWeathers[index]);
-                  },
-                );
-              },
-              error: (error) => CustomErrorWidget(
-                error: error,
-                onRefresh: _loadDailyWeatherData,
+        child: Column(
+          children: [
+            Image.asset(
+              ImageConstants.kBand,
+            ),
+            Expanded(
+              child: BlocBuilder<DailyWeatherBloc, DailyWeatherState>(
+                builder: (context, state) {
+                  return state.when(
+                    loading: () =>
+                        const Center(child: CustomProgressIndicator()),
+                    loaded: (List<DailyWeather> dailyWeathers) {
+                      return ListView.separated(
+                        separatorBuilder: (context, index) =>
+                            const CustomDivider(),
+                        itemCount: dailyWeathers.length,
+                        itemBuilder: (context, index) {
+                          return DailyWeatherWidget(
+                              weather: dailyWeathers[index]);
+                        },
+                      );
+                    },
+                    error: (error) => CustomErrorWidget(
+                      error: error,
+                      onRefresh: _loadDailyWeatherData,
+                    ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+          ],
         ),
       ),
     );

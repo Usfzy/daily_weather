@@ -11,13 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
+  collection: ^1.18.0
   chopper: ^7.2.0
   freezed_annotation: ^2.4.1
   flutter_bloc: ^8.1.4
   get_it: ^7.6.7
+  intl: ^0.18.0
   internet_connection_checker: ^1.0.0+1
   json_annotation: ^4.8.1
   logging: ^1.2.0
@@ -30,12 +31,14 @@ dev_dependencies:
   chopper_generator: ^7.2.0
   flutter_lints: ^3.0.0
   freezed: ^2.4.7
-  
+
 flutter:
   uses-material-design: true
 
   assets:
     - assets/
+    - assets/images/
+    - assets/svgs/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

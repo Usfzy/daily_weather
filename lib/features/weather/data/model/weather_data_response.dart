@@ -67,8 +67,8 @@ class Daily {
   final List<int> weatherCode;
   final List<double> temperature2mMax;
   final List<double> temperature2mMin;
-  final List<String> sunrise;
-  final List<String> sunset;
+  final List<DateTime> sunrise;
+  final List<DateTime> sunset;
 
   Daily({
     required this.time,
@@ -84,7 +84,9 @@ class Daily {
         weatherCode: List.from(json["weather_code"] ?? []),
         temperature2mMax: List.from(json["temperature_2m_max"] ?? []),
         temperature2mMin: List.from(json["temperature_2m_min"] ?? []),
-        sunrise: List.from(json["sunrise"] ?? []),
-        sunset: List.from(json["sunset"] ?? []),
+        sunrise:
+            List<DateTime>.from(json["sunrise"].map((x) => DateTime.parse(x))),
+        sunset:
+            List<DateTime>.from(json["sunset"].map((x) => DateTime.parse(x))),
       );
 }

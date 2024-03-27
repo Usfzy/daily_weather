@@ -1,5 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:daily_weather/core/params/params.dart';
 import 'package:daily_weather/core/services/network_info.dart';
+import 'package:daily_weather/core/utils/extensions.dart';
 import 'package:daily_weather/features/weather/data/datasource/weather_data_source.dart';
 import 'package:daily_weather/features/weather/domain/daily_weather.dart';
 
@@ -26,12 +28,13 @@ class WeatherRepository {
       (index) => DailyWeather(
         time: result.daily.time[index],
         weatherCode: parseWMOCode(result.daily.weatherCode[index]),
+        weatherCategory: categorizeWeather(result.daily.weatherCode[index]),
         temperature2mMax: result.daily.temperature2mMax[index],
         temperature2mMin: result.daily.temperature2mMin[index],
-        sunrise: result.daily.sunrise[index],
-        sunset: result.daily.sunset[index],
+        sunrise: result.daily.sunrise[index].toTime,
+        sunset: result.daily.sunset[index].toTime,
       ),
-    );
+    ).sorted((a, b) => b.time.compareTo(a.time));
   }
 
   String parseWMOCode(int code) {
@@ -67,5 +70,16 @@ class WeatherRepository {
     };
 
     return weatherDescriptions[code] ?? "Unknown weather code ($code)";
+  }
+
+  String categorizeWeather(int code) {
+    final Map<int, String> weatherCategories = {
+      0: 'sun',
+      for (var cloudyCode in [1, 2, 3]) cloudyCode: 'cloud',
+      for (var rainCode in [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82])
+        rainCode: 'rain',
+    };
+
+    return weatherCategories[code] ?? 'unknown';
   }
 }

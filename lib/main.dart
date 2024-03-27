@@ -26,7 +26,7 @@ class WeatherApp extends StatelessWidget {
         weatherRepository: serviceLocator(),
       ),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Daily Weather',
         theme: theme,
         home: const HomeScreen(),
       ),
