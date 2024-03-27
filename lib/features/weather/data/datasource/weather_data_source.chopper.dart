@@ -21,7 +21,7 @@ final class _$WeatherDataSource extends WeatherDataSource {
   Future<WeatherDataResponse> getWeather(
     double latitude,
     double longitude,
-    List<String> dailyParams,
+    String dailyFields,
     int pastDays,
     int forecastDays,
   ) async {
@@ -29,7 +29,7 @@ final class _$WeatherDataSource extends WeatherDataSource {
     final Map<String, dynamic> $params = <String, dynamic>{
       'latitude': latitude,
       'longitude': longitude,
-      'daily': dailyParams,
+      'daily': dailyFields,
       'past_days': pastDays,
       'forecast_days': forecastDays,
     };

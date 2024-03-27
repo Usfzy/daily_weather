@@ -82,8 +82,8 @@ class Daily {
   factory Daily.fromJson(Map<String, dynamic> json) => Daily(
         time: List.from(json["time"] ?? []),
         weatherCode: List.from(json["weather_code"] ?? []),
-        temperature2mMax: List.from(json["temperature2m_max"] ?? []),
-        temperature2mMin: List.from(json["temperature2m_min"] ?? []),
+        temperature2mMax: List.from(json["temperature_2m_max"] ?? []),
+        temperature2mMin: List.from(json["temperature_2m_min"] ?? []),
         sunrise: List.from(json["sunrise"] ?? []),
         sunset: List.from(json["sunset"] ?? []),
       );

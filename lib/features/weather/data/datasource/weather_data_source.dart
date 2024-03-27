@@ -10,10 +10,10 @@ abstract class WeatherDataSource extends ChopperService {
 
   @Get(path: '/v1/forecast')
   Future<WeatherDataResponse> getWeather(
-    @Query("latitude") double latitude,
-    @Query("longitude") double longitude,
-    @Query("daily") List<String> dailyParams,
-    @Query("past_days") int pastDays,
-    @Query("forecast_days") int forecastDays,
+    @Query('latitude') double latitude,
+    @Query('longitude') double longitude,
+    @Query('daily') String dailyFields,
+    @Query('past_days') int pastDays,
+    @Query('forecast_days') int forecastDays,
   );
 }

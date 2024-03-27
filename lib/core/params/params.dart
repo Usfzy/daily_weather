@@ -1,16 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class WeatherParams {
   final double latitude;
   final double longitude;
-  final List<String> dailyParams;
+  final String dailyParams;
   final int pastDays;
   final int forecastDays;
 
   WeatherParams({
-    required this.latitude,
-    required this.longitude,
-    required this.dailyParams,
-    required this.pastDays,
-    required this.forecastDays,
+    this.latitude = 40.89,
+    this.longitude = -8.615,
+    this.pastDays = 7,
+    this.forecastDays = 3,
+    this.dailyParams =
+        'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset',
   });
 }
